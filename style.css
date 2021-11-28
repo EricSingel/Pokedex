@@ -18,6 +18,20 @@
 body {
   font-family: 'Ubuntu', sans-serif !important;
 }
+h1 {
+  text-align: center;
+}
+
+h5 {
+  font-size: 14px !important;
+}
+
+table {
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 12px;
+}
 
 #pokemon {
   display: flex;
@@ -30,6 +44,15 @@ body {
   position: relative;
   height: 100vh;
   width: 100%;
+}
+#about {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+#stats {
+  font-size: 13px;
+  font-weight: bolder;
 }
 
 #stats tr td:first-child {
@@ -47,24 +70,6 @@ body {
   background-color: rgb(255, 145, 0);
 }
 
-h1 {
-  text-align: center;
-}
-
-h5 {
-  font-size: 14px !important;
-}
-
-table {
-  height: 100%;
-  width: 100%;
-  color: black;
-  font-size: 12px;
-}
-.card-header a {
-  color: black;
-}
-
 .card {
   min-width: 47% !important;
   min-height: 90px;
@@ -72,12 +77,57 @@ table {
   border-radius: 10px !important;
   overflow: hidden;
 }
-
+.card-header {
+  background-color: transparent !important;
+  margin-top: 24px;
+}
+.card-header a {
+  color: black;
+}
+.card:hover {
+  cursor: pointer;
+}
 .form-control {
   width: 80% !important;
 }
 
-.navbar {
+.container-fluid {
+  flex-wrap: unset !important;
+}
+.col-md-8 {
+  width: 100% !important;
+  position: relative;
+  min-height: 100%;
+}
+.row {
+  width: 100% !important;
+  min-height: 100%;
+}
+.type {
+  width: fit-content;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-bottom: 2px;
+}
+
+.pokemonImg {
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  width: 80px !important;
+  height: 80px !important;
+  z-index: 2;
+}
+.pokeballImg {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 80px !important;
+  height: 80px !important;
+  opacity: 0.2;
+  z-index: 1;
 }
 
 div.focusBody div.card {
@@ -106,47 +156,9 @@ div.focusHeader button {
   margin: 8px;
 }
 
-.row {
-  width: 100% !important;
-  min-height: 100%;
-}
-
-.col-md-8 {
-  width: 100% !important;
-  position: relative;
-  min-height: 100%;
-}
-
-.pokemonImg {
-  position: absolute;
-  right: 5px;
-  bottom: 2px;
-  width: 80px !important;
-  height: 80px !important;
-  z-index: 2;
-}
-.pokeballImg {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 80px !important;
-  height: 80px !important;
-  opacity: 0.2;
-  z-index: 1;
-}
-
 div.focusHeader div.type {
   margin-left: 8px;
   margin-bottom: 8px;
-}
-
-.type {
-  width: fit-content;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.4);
-  padding-left: 4px;
-  padding-right: 4px;
-  margin-bottom: 2px;
 }
 
 .focusHeader {
@@ -162,23 +174,81 @@ div.focusHeader div.type {
   background-color: white;
 }
 
-.card-header {
-  background-color: transparent !important;
-  margin-top: 24px;
-}
-
 .progress {
   height: 6px !important;
 }
 
-#about {
-  font-size: 16px;
-  font-weight: bolder;
+/* Pokeball animated */
+
+.pokeball {
+  box-sizing: border-box;
+  border: 10px solid #262122;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  margin: 0 auto;
+  background: linear-gradient(
+    150deg,
+    #ba0c2f 0%,
+    #ba0c2f 48%,
+    #262122 48%,
+    #262122 52%,
+    #fff 52%,
+    #fff 100%
+  );
 }
 
-#stats {
-  font-size: 13px;
-  font-weight: bolder;
+.pokeball:before,
+.pokeball:after {
+  content: ' ';
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+}
+
+.pokeball:before {
+  background: #262122;
+  width: 80px;
+  height: 80px;
+  margin-top: 75px;
+  margin-left: 75px;
+}
+
+.pokeball:after {
+  background: #fff;
+  width: 50px;
+  height: 50px;
+  margin-top: 70px;
+  margin-left: 70px;
+  border: double 20px #262122;
+}
+
+.pokeball-animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 2;
+  animation-name: shake;
+}
+
+@keyframes shake {
+  from {
+    transform: none;
+  }
+  20% {
+    transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  40% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 5deg);
+  }
+  50% {
+    transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 50deg);
+  }
+  to {
+    transform: none;
+  }
 }
 
 @media all and (max-width: 400px) {

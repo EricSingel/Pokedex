@@ -20,11 +20,12 @@
     <script src="script.js"></script>
   </head>
   <body onload="renderPokemon()">
+    <div class="pokeball pokeball-animated" style="display: none"></div>
     <nav id="navbar" class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand">
           <img
-            src="/docs/5.1/assets/brand/bootstrap-logo.svg"
+            src="img/pokemon-g5fb97ba1c_640.png"
             alt=""
             width="30"
             height="24"
@@ -32,14 +33,13 @@
           />
           Pokedéx
         </a>
+        <input
+          id="searchInput"
+          onkeyup="search()"
+          class="form-control me-2"
+          placeholder="Search"
+        />
       </div>
-      <input
-        id="searchInput"
-        onkeyup="search()"
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-      />
     </nav>
     <div id="pokemon"></div>
     <div id="pokemonFocus" style="display: none"></div>

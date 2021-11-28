@@ -154,6 +154,10 @@ async function pokemonFocus(index) {
   `;
   printStats(pokemonStats);
   typesFocus(index);
+  hidePokemon();
+}
+
+function hidePokemon() {
   document.getElementById('pokemon').style.display = 'none';
   document.getElementById('navbar').style.display = 'none';
   document.getElementById('pokemonFocus').style.display = 'block';
@@ -197,6 +201,23 @@ function printStats(pokemonStats) {
 
 function search() {
   let searchInput = document.getElementById('searchInput').value;
+  searchInput = searchInput.toLowerCase();
+  let searchValue = [];
+  let pokemonNames = document.getElementsByTagName('h5');
+  for (let i = 1; i < 140; i++) {
+    document.getElementById(i).style.display = 'none';
+  }
+  for (let i = 0; i < pokemonNames.length; i++) {
+    const pokemonName = pokemonNames[i];
+    if (pokemonName.innerText.toLowerCase().includes(searchInput)) {
+      searchValue.push(
+        pokemonName.parentElement.parentElement.parentElement.parentElement.id
+      );
+    }
+  }
+  searchValue.forEach((id) => {
+    document.getElementById(id).style.display = 'flex';
+  });
 }
 
 function capitalizeFirstLetter(string) {
