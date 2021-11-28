@@ -1,0 +1,199 @@
+:root {
+  --bg-electric: #fff23d;
+  --bg-grass: #4acfb2;
+  --bg-fire: #fc6c6e;
+  --bg-water: #75bafc;
+  --bg-bug: #d3fc75;
+  --bg-normal: #bdbc93;
+  --bg-ground: #ffde26;
+  --bg-poison: #9626ff;
+  --bg-fairy: #ff97f1;
+  --bg-fighting: #fff9d6;
+  --bg-psychic: #af7ef0;
+  --bg-rock: #c7c951;
+  --bg-ghost: #8af4f8;
+  --bg-ice: #b5f4f7;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
+#pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 12px;
+}
+
+#pokemonFocus {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+#stats tr td:first-child {
+  width: 20%;
+}
+
+#stats tr td:last-child {
+  width: 40%;
+}
+
+#stats tr:nth-child(even) td:last-child div.progress-bar {
+  background-color: rgb(115, 255, 0);
+}
+#stats tr:nth-child(odd) td:last-child div.progress-bar {
+  background-color: rgb(255, 145, 0);
+}
+
+h1 {
+  text-align: center;
+}
+
+h5 {
+  font-size: 14px !important;
+}
+
+table {
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 12px;
+}
+.card-header a {
+  color: black;
+}
+
+.card {
+  min-width: 47% !important;
+  min-height: 90px;
+  color: white;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.form-control {
+  width: 80% !important;
+}
+
+.navbar {
+}
+
+div.focusBody div.card {
+  height: 100%;
+  border: none;
+}
+
+div.focusBody ul {
+  font-size: 13px;
+}
+.focusImg {
+  max-width: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 140%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+}
+
+div.focusHeader button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin: 8px;
+}
+
+.row {
+  width: 100% !important;
+  min-height: 100%;
+}
+
+.col-md-8 {
+  width: 100% !important;
+  position: relative;
+  min-height: 100%;
+}
+
+.pokemonImg {
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  width: 80px !important;
+  height: 80px !important;
+  z-index: 2;
+}
+.pokeballImg {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 80px !important;
+  height: 80px !important;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+div.focusHeader div.type {
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.type {
+  width: fit-content;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-bottom: 2px;
+}
+
+.focusHeader {
+  height: 50%;
+  background-color: burlywood;
+}
+
+.focusBody {
+  position: relative;
+  height: 50%;
+  border-radius: 16px;
+  margin-top: -24px;
+  background-color: white;
+}
+
+.card-header {
+  background-color: transparent !important;
+  margin-top: 24px;
+}
+
+.progress {
+  height: 6px !important;
+}
+
+#about {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+#stats {
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+@media all and (max-width: 400px) {
+  .col-md-8 img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+@media all and (min-width: 500px) {
+  .card {
+    min-width: 30% !important;
+  }
+}
+@media all and (min-width: 900px) {
+  .card {
+    min-width: 24% !important;
+  }
+}
