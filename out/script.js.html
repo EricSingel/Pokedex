@@ -1,4 +1,32 @@
-let currentPokemon;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let currentPokemon;
 let currentSpecies;
 
 /**
@@ -24,23 +52,23 @@ async function loadSpecies(index) {
  *
  */
 async function renderPokemon() {
-  for (let i = 1; i < 152; i++) {
+  for (let i = 1; i &lt; 152; i++) {
     await loadPokemon(i);
     let pokemonPicture = currentPokemon.sprites.other.dream_world.front_default;
     let pokemonName = currentPokemon.name;
     pokemonName = capitalizeFirstLetter(pokemonName);
     document.getElementById('pokemon').innerHTML += `
-    <div id="${i}" onclick="pokemonFocus(${i})" class="card m-1">
-        <div class="row g-0">
-            <div class="col-md-8">
-                <div id="pokemon${i}" class="card-body">
-                <h5 class="card-title">${pokemonName}</h5>
-                <img src="${pokemonPicture}" class="pokemonImg">
-                <img src="img/pokeball.png" class="pokeballImg">
-                </div>
-            </div>
-        </div>
-    </div>
+    &lt;div id="${i}" onclick="pokemonFocus(${i})" class="card m-1">
+        &lt;div class="row g-0">
+            &lt;div class="col-md-8">
+                &lt;div id="pokemon${i}" class="card-body">
+                &lt;h5 class="card-title">${pokemonName}&lt;/h5>
+                &lt;img src="${pokemonPicture}" class="pokemonImg">
+                &lt;img src="img/pokeball.png" class="pokeballImg">
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
     `;
     types(i);
   }
@@ -66,17 +94,17 @@ async function pokemonFocus(index) {
   let species = currentSpecies.genera[4].genus;
 
   focusDiv.innerHTML = `
-    <div id="focusHeader" class="focusHeader">
-        <div>
-          <button onclick="backToPokemon()"><img src="img/arrow-88-32.ico" alt="" /></button>
-          <h1>${pokemonName}</h1>
-        </div>
-    </div>
-    <div class="focusBody">
-        <img class="focusImg" src="${pokemonImg}" alt="" />
-        <div class="card text-center">
-          <div class="card-header">
-            <ul
+    &lt;div id="focusHeader" class="focusHeader">
+        &lt;div>
+          &lt;button onclick="backToPokemon()">&lt;img src="img/arrow-88-32.ico" alt="" />&lt;/button>
+          &lt;h1>${pokemonName}&lt;/h1>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="focusBody">
+        &lt;img class="focusImg" src="${pokemonImg}" alt="" />
+        &lt;div class="card text-center">
+          &lt;div class="card-header">
+            &lt;ul
               class="
                 nav nav-tabs
                 card-header-tabs
@@ -85,88 +113,88 @@ async function pokemonFocus(index) {
                 justify-content-evenly
               "
             >
-              <li class="nav-item">
-                <a id="aboutLink" onclick="showTables(1)" class="nav-link active" aria-current="true">About</a>
-              </li>
-              <li class="nav-item">
-                <a id="statsLink" onclick="showTables(2)" class="nav-link inactive">Base Stats</a>
-              </li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <table id="about" class="show">
-              <tr>
-                <td>Spezies</td>
-                <td>${species}</td>
-              </tr>
-              <tr>
-                <td>Größe</td>
-                <td>${pokemonHeight}</td>
-              </tr>
-              <tr>
-                <td>Gewicht</td>
-                <td>${pokemonWeight}</td>
-              </tr>
-            </table>
-            <table id="stats" style="display: none;">
-              <tr>
-                <td>Leben</td>
-                <td id="Stat0"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg0" class="progress-bar " role="progressbar" ></div>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Angriff</td>
-                <td id="Stat1"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg1" class="progress-bar " role="progressbar" ></div>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Verteidigung</td>
-                <td id="Stat2"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg2" class="progress-bar " role="progressbar" ></div>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Spez.-Angriff</td>
-                <td id="Stat3"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg3" class="progress-bar " role="progressbar" ></div>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Spez.-Verteidigung</td>
-                <td id="Stat4"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg4" class="progress-bar " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="200"></div>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Geschwindigkeit</td>
-                <td id="Stat5"></td>
-                <td>
-                    <div class="progress">
-                        <div id="StatProg5" class="progress-bar " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="200"></div>
-                    </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
+              &lt;li class="nav-item">
+                &lt;a id="aboutLink" onclick="showTables(1)" class="nav-link active" aria-current="true">About&lt;/a>
+              &lt;/li>
+              &lt;li class="nav-item">
+                &lt;a id="statsLink" onclick="showTables(2)" class="nav-link inactive">Base Stats&lt;/a>
+              &lt;/li>
+            &lt;/ul>
+          &lt;/div>
+          &lt;div class="card-body">
+            &lt;table id="about" class="show">
+              &lt;tr>
+                &lt;td>Spezies&lt;/td>
+                &lt;td>${species}&lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Größe&lt;/td>
+                &lt;td>${pokemonHeight}&lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Gewicht&lt;/td>
+                &lt;td>${pokemonWeight}&lt;/td>
+              &lt;/tr>
+            &lt;/table>
+            &lt;table id="stats" style="display: none;">
+              &lt;tr>
+                &lt;td>Leben&lt;/td>
+                &lt;td id="Stat0">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg0" class="progress-bar " role="progressbar" >&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Angriff&lt;/td>
+                &lt;td id="Stat1">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg1" class="progress-bar " role="progressbar" >&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Verteidigung&lt;/td>
+                &lt;td id="Stat2">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg2" class="progress-bar " role="progressbar" >&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Spez.-Angriff&lt;/td>
+                &lt;td id="Stat3">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg3" class="progress-bar " role="progressbar" >&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Spez.-Verteidigung&lt;/td>
+                &lt;td id="Stat4">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg4" class="progress-bar " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="200">&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td>Geschwindigkeit&lt;/td>
+                &lt;td id="Stat5">&lt;/td>
+                &lt;td>
+                    &lt;div class="progress">
+                        &lt;div id="StatProg5" class="progress-bar " role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="200">&lt;/div>
+                    &lt;/div>
+                &lt;/td>
+              &lt;/tr>
+            &lt;/table>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
   `;
   printStats(pokemonStats);
   typesFocus(index);
@@ -211,7 +239,7 @@ function backToPokemon() {
  */
 
 function printStats(pokemonStats) {
-  for (let i = 0; i < pokemonStats.length; i++) {
+  for (let i = 0; i &lt; pokemonStats.length; i++) {
     const stat = pokemonStats[i];
     let percentageProgress = Math.round((stat.base_stat / 150) * 100);
     document.getElementById('Stat' + i).innerHTML = `${stat.base_stat}`;
@@ -234,10 +262,10 @@ function search() {
   searchInput = searchInput.toLowerCase();
   let searchValue = [];
   let pokemonNames = document.getElementsByTagName('h5');
-  for (let i = 1; i < 152; i++) {
+  for (let i = 1; i &lt; 152; i++) {
     document.getElementById(i).style.display = 'none';
   }
-  for (let i = 0; i < pokemonNames.length; i++) {
+  for (let i = 0; i &lt; pokemonNames.length; i++) {
     const pokemonName = pokemonNames[i];
     if (pokemonName.innerText.toLowerCase().includes(searchInput)) {
       searchValue.push(
@@ -257,10 +285,10 @@ function capitalizeFirstLetter(string) {
 function types(i) {
   let currentTypeDiv = document.getElementById('pokemon' + i);
   let currentTypes = currentPokemon.types;
-  for (let j = 0; j < currentTypes.length; j++) {
+  for (let j = 0; j &lt; currentTypes.length; j++) {
     const currentType = currentTypes[j].type.name;
     currentTypeDiv.innerHTML += `
-        <div class="type">${currentType}</div>
+        &lt;div class="type">${currentType}&lt;/div>
         `;
   }
   bgPicker(i, currentTypes);
@@ -268,10 +296,10 @@ function types(i) {
 function typesFocus(i) {
   let currentTypeDiv = document.getElementById('focusHeader');
   let currentTypes = currentPokemon.types;
-  for (let j = 0; j < currentTypes.length; j++) {
+  for (let j = 0; j &lt; currentTypes.length; j++) {
     const currentType = currentTypes[j].type.name;
     currentTypeDiv.innerHTML += `
-        <div class="type">${currentType}</div>
+        &lt;div class="type">${currentType}&lt;/div>
         `;
   }
   bgPickerFocus(currentTypes);
@@ -371,3 +399,26 @@ function bgPickerFocus(currentType) {
     document.getElementById('focusHeader').style.backgroundColor = '#8af4f8';
   }
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#loadPokemon">loadPokemon</a></li><li><a href="global.html#pokemonFocus">pokemonFocus</a></li><li><a href="global.html#printStats">printStats</a></li><li><a href="global.html#renderPokemon">renderPokemon</a></li><li><a href="global.html#search">search</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 15:39:39 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
